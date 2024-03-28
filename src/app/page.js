@@ -14,6 +14,7 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithRedirect,
 } from "firebase/auth";
 import { firebaseConfig } from "../../firebase.config";
 import { useRouter } from "next/navigation";
@@ -32,7 +33,7 @@ const Login = () => {
   const [error, setError] = useState("");
 
   const handleGoogleLogin = () => {
-    signInWithPopup(auth, provider)
+    signInWithRedirect(auth, provider)
       .then((result) => {
         navigate.push("/home");
         // This gives you a Google Access Token. You can use it to access the Google API.
