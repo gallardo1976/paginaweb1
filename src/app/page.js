@@ -1,8 +1,9 @@
 "use client";
 import Google from "../../public/google.webp";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "../../public/logo01.png";
+
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { initializeApp } from "firebase/app";
@@ -22,42 +23,46 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-const handleGoogleLogin = () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
-};
-
 const Login = () => {
   const navigate = useRouter();
+  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        navigate.push("/home");
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
+
   const handleCreateAccount = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        alert("su usuario esta registrado");
+        alert("su usuario esta registrado, Inicia sesion");
         const user = userCredential.user;
         console.log("user", user);
+        setEmail("");
+        setPassword("");
       })
       .catch((error) => {
         console.log(error);
@@ -123,7 +128,7 @@ const Login = () => {
             height={500}
           />
         </div>
-        <div className="md:w-1/3 md:order-2 md:m-10 sm:m-10 bg-gradient-to-br from-[#a09595] to-negro bg-opacity-90 p-8 rounded-lg shadow-lg">
+        <div className="md:w-1/3 md:order-2 md:m-10 sm:m-10 bg-gradient-to-br from-[#5f5151] to-negro  p-8 rounded-lg shadow-lg">
           <div className="text-center  md:text-left">
             <h2 className="text-2xl font-semibold text-white mb-4">
               Iniciar Sesión
@@ -153,7 +158,7 @@ const Login = () => {
 
             <button
               onClick={handleGoogleLogin}
-              className="flex items-center justify-center w-full bg-rosado  text-negro font-bold hover:bg-black hover:text-white rounded-md mt-2 focus:outline-none focus:bg-red-600"
+              className="flex items-center justify-center w-full bg-rosado  text-negro font-bold hover:bg-black hover:text-white rounded-md mt-2 focus:outline-none"
             >
               <Image
                 src={Google}
@@ -164,12 +169,14 @@ const Login = () => {
               />
               Iniciar con Google
             </button>
-            <button
-              onClick={handleCreateAccount}
-              className=" mt-2 w-full bg-rosado hover:bg-negro hover:text-white text-negro font-bold py-2 rounded-md focus:outline-none focus:bg-blue-600"
-            >
-              Crear cuenta
-            </button>
+            <div className="flex justify-center ">
+              <button
+                onClick={handleCreateAccount}
+                className=" mt-6 px-10 bg-transparent hover:bg-negro hover:text-white text-white font-bold py-2 rounded-md focus:outline-none "
+              >
+                Crear cuenta
+              </button>
+            </div>
           </div>
         </div>
       </div>
