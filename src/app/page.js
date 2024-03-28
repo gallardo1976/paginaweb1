@@ -118,7 +118,7 @@ const Login = () => {
       </div>
 
       <div className=" flex flex-col md:flex-row items-center justify-center ">
-        <div className="md:w-1/2 md:order-1 mb-8 md:mb-0 p-2">
+        <div className="md:w-1/2 md:order-1 mb-4 md:mb-0 p-2">
           <Image
             id="principal"
             src={Logo}
@@ -172,7 +172,7 @@ const Login = () => {
             <div className="flex justify-center ">
               <button
                 onClick={handleCreateAccount}
-                className=" mt-6 px-10 bg-transparent hover:bg-negro hover:text-white text-white font-bold py-2 rounded-md focus:outline-none "
+                className=" mt-2 px-10 bg-transparent hover:bg-negro hover:text-white text-white font-bold py-2 rounded-md focus:outline-none "
               >
                 Crear cuenta
               </button>
