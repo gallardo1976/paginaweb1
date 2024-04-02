@@ -26,6 +26,54 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+@keyframes changeBorderColor {
+  0% {
+    border-color: blue;
+  }
+  25% {
+    border-color: red;
+  }
+  50% {
+    border-color: green;
+  }
+  75% {
+    border-color: yellow;
+  }
+  100% {
+    border-color: blue;
+  }
+}
+
+.animate-border-color {
+  animation: changeBorderColor 5s infinite alternate;
+}
+
+@keyframes dynamicBorder {
+  0% {
+    border-color: #fcfcfc;
+  } /* Rojo */
+  25% {
+    border-color: #000000;
+  } /* Verde */
+  50% {
+    border-color: #ffffff;
+  } /* Azul */
+  75% {
+    border-color: #000000;
+  } /* Amarillo */
+  100% {
+    border-color: #ffffff;
+  } /* Magenta */
+}
+
+.border-dynamic {
+  animation: dynamicBorder 3s infinite alternate; /* La animación dura 5 segundos y se repite infinitamente */
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

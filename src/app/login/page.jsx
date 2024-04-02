@@ -1,8 +1,8 @@
 "use client";
-import Google from "../../public/google.webp";
+import Google from "../../../public/google.webp";
 import React from "react";
 import { useState, useEffect } from "react";
-import Logo from "../../public/logo01.png";
+import Logo from "../../../public/logo01.png";
 
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
@@ -16,7 +16,7 @@ import {
   signInWithEmailAndPassword,
   signInWithRedirect,
 } from "firebase/auth";
-import { firebaseConfig } from "../../firebase.config";
+import { firebaseConfig } from "../../../firebase.config";
 import { useRouter } from "next/navigation";
 const provider = new GoogleAuthProvider();
 
@@ -105,9 +105,9 @@ const Login = () => {
   };
 
   return (
-    <main className=" min-h-screen bg-gradient-to-br from-[#F2F2F2] to-negro">
+    <main className=" bg-black">
       <div className="flex justify-center">
-        <h1 className=" text-gris text-center mt-10 mb-20 text-3xl font-bold italic font-italic">
+        <h1 className=" text-[#F2F2F2] text-center mt-10 mb-20 text-3xl font-bold  font-italic">
           Bienvenido a Evolution Tattoo <br />
           <TypeAnimation
             sequence={["Inicia", 1000, "Sesión", 1000]}
