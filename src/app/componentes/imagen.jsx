@@ -82,7 +82,7 @@ const UploadImage = () => {
     });
 
     return () => unsubscribe();
-  }, []);
+  });
 
   const handleImageChange = (e, id) => {
     const file = e.target.files[0];

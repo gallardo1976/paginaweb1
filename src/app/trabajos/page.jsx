@@ -1,5 +1,5 @@
 import React from "react";
-import Crud from "../componentes/crud";
+
 import Imagenn from "../componentes/imagen";
 function Trabajos() {
   return (
