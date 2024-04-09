@@ -84,9 +84,9 @@ const Formulario = () => {
           onChange={handleChange}
         ></textarea>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-center ">
         <button
-          className="bg-blue-500 hover:bg-blue-700  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className=" bg-gray-500 text-black hover:text-2xl hover:bg-white hover:text-black border  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >
           Enviar
