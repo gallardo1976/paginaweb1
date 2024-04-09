@@ -83,6 +83,7 @@ const LoginWithGoogle = () => {
             alt="logo"
             className="w-10 h-auto mx-2"
           />
+
           <button onClick={handleGoogleSignIn} className="">
             Iniciar sesion con Google
           </button>
