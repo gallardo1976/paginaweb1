@@ -6,7 +6,7 @@ import Google from "../../../public/google.webp";
 import Logon from "../../../public/logo01.png";
 import {
   getAuth,
-  signInWithPopup,
+  signInWithRedirect,
   GoogleAuthProvider,
   onAuthStateChanged,
 } from "firebase/auth";
@@ -56,7 +56,7 @@ const LoginWithGoogle = () => {
   const handleGoogleSignIn = () => {
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
-    signInWithPopup(auth, provider)
+    signInWithRedirect(auth, provider)
       .then((result) => {
         // El usuario ha iniciado sesión correctamente
         const user = result.user;

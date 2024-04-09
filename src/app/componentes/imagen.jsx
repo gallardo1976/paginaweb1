@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { CircularProgress } from "@mui/material";
+// Importa un indicador de carga de Material-UI u otro que prefieras
 import {
   getStorage,
   ref,
@@ -26,6 +28,7 @@ const UploadImage = () => {
   ]);
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Nuevo estado de carga
   const firestore = getFirestore();
 
   useEffect(() => {
@@ -49,6 +52,7 @@ const UploadImage = () => {
         });
         const loadedImages = await Promise.all(promises);
         setImages(loadedImages);
+        setIsLoading(false); // Indica que la carga ha finalizado
       } catch (e) {
         console.error("Error getting documents: ", e);
       }
@@ -82,7 +86,7 @@ const UploadImage = () => {
     });
 
     return () => unsubscribe();
-  });
+  }, []);
 
   const handleImageChange = (e, id) => {
     const file = e.target.files[0];
@@ -184,83 +188,91 @@ const UploadImage = () => {
 
   return (
     <div className="grid mt-6 grid-cols-1-center justify-center gap-4 sm:grid-cols-2 md:grid-cols-4">
-      {images.map((image) => (
-        <div
-          key={image.id}
-          className="max-w-sm rounded overflow-hidden shadow-lg h-full"
-        >
-          <Image
-            className="w-full h-80 object-cover"
-            width={500}
-            height={500}
-            src={image.imageURL}
-            alt="Imagen subida"
-          />
-
-          <div>
-            {isAdmin ? (
-              <>
-                <input
-                  type="text"
-                  value={image.title}
-                  onChange={(e) => handleTitleChange(e, image.id)}
-                  className="mt-2 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                  placeholder="Title"
-                />
-                <textarea
-                  value={image.description}
-                  onChange={(e) => handleDescriptionChange(e, image.id)}
-                  className="mt-2 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                  rows="4"
-                  placeholder="Description"
-                />
-              </>
-            ) : (
-              <>
-                <h3 className="text-center font-jersey mt-2">{image.title}</h3>
-                <p className="text-center font-jersey text-gray-500 border-b mb-4 ">
-                  {image.description}
-                </p>
-              </>
-            )}
-          </div>
-          <div
-            id={image.id === 2 && !isAdmin ? "hidden" : ""}
-            className="px-6 py-4  m-5"
-          >
-            {user && isAdmin && (
-              <div>
-                <input
-                  type="file"
-                  onChange={(e) => handleImageChange(e, image.id)}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                />
-
-                <button
-                  onClick={() => handleUpload(image.id)}
-                  disabled={!image.file}
-                  className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Subir imagen
-                </button>
-                <button
-                  onClick={() => handleDeleteImage(image.id)}
-                  disabled={!image.imageURL}
-                  className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                >
-                  Eliminar imagen
-                </button>
-                <button
-                  onClick={() => handleUpdateDescription(image.id)}
-                  className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                >
-                  Actualizar descripción
-                </button>
-              </div>
-            )}
-          </div>
+      {isLoading ? ( // Renderiza el indicador de carga mientras isLoading es true
+        <div className="flex justify-center items-center h-full">
+          <CircularProgress />
         </div>
-      ))}
+      ) : (
+        images.map((image) => (
+          <div
+            key={image.id}
+            className="max-w-sm rounded overflow-hidden shadow-lg h-full"
+          >
+            <Image
+              className="w-full h-80 object-cover"
+              width={500}
+              height={500}
+              src={image.imageURL}
+              alt="Imagen subida"
+            />
+
+            <div>
+              {isAdmin ? (
+                <>
+                  <input
+                    type="text"
+                    value={image.title}
+                    onChange={(e) => handleTitleChange(e, image.id)}
+                    className="mt-2 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    placeholder="Title"
+                  />
+                  <textarea
+                    value={image.description}
+                    onChange={(e) => handleDescriptionChange(e, image.id)}
+                    className="mt-2 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    rows="4"
+                    placeholder="Description"
+                  />
+                </>
+              ) : (
+                <>
+                  <h3 className="text-center font-jersey mt-2">
+                    {image.title}
+                  </h3>
+                  <p className="text-center font-jersey text-gray-500 border-b mb-4 ">
+                    {image.description}
+                  </p>
+                </>
+              )}
+            </div>
+            <div
+              id={image.id === 2 && !isAdmin ? "hidden" : ""}
+              className="px-6 py-4  m-5"
+            >
+              {user && isAdmin && (
+                <div>
+                  <input
+                    type="file"
+                    onChange={(e) => handleImageChange(e, image.id)}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  />
+
+                  <button
+                    onClick={() => handleUpload(image.id)}
+                    disabled={!image.file}
+                    className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Subir imagen
+                  </button>
+                  <button
+                    onClick={() => handleDeleteImage(image.id)}
+                    disabled={!image.imageURL}
+                    className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                  >
+                    Eliminar imagen
+                  </button>
+                  <button
+                    onClick={() => handleUpdateDescription(image.id)}
+                    className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                  >
+                    Actualizar descripción
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 };
