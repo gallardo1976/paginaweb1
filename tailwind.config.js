@@ -7,23 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        negro: "#0D0D0D",
-        gris: "#404040",
-        rosado: "#BFACA4",
-        cafe: "#A68A80",
+      fontFamily: {
+        jersey: ["jersey", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-
-      fontFamily: {
-        festive: ["festive", "sans-serif"],
-      },
     },
   },
-
   plugins: [],
 };

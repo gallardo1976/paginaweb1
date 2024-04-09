@@ -74,6 +74,13 @@ body {
   animation: dynamicBorder 3s infinite alternate; /* La animación dura 5 segundos y se repite infinitamente */
 }
 
+@font-face {
+  font-family: "jersey";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/jersey.ttf") format("truetype");
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

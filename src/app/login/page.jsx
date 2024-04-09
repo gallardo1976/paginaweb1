@@ -151,7 +151,7 @@ const Login = () => {
 
             <button
               onClick={handleSingIn}
-              className="w-full bg-rosadohover:bg-negro bg-rosado hover:bg-black hover:text-white text-negro font-bold py-2 rounded-md focus:outline-none focus:bg-black-600"
+              className="w-full bg-rosadohover:bg-negro bg-[black] hover:bg-black hover:text-white text-negro font-bold py-2 rounded-md focus:outline-none focus:bg-black-600"
             >
               Iniciar Sesión
             </button>
@@ -159,7 +159,7 @@ const Login = () => {
 
             <button
               onClick={handleGoogleLogin}
-              className="flex items-center justify-center w-full bg-rosado  text-negro font-bold hover:bg-black hover:text-white rounded-md mt-2 focus:outline-none"
+              className="flex items-center justify-center w-full bg-black  text-negro font-bold hover:bg-black hover:text-white rounded-md mt-2 focus:outline-none"
             >
               <Image
                 src={Google}
@@ -173,7 +173,7 @@ const Login = () => {
             <div className="flex justify-center ">
               <button
                 onClick={handleCreateAccount}
-                className=" mt-2 px-10 bg-transparent hover:bg-negro hover:text-white text-white font-bold py-2 rounded-md focus:outline-none "
+                className=" mt-2 px-10 bg-transparent hover:bg-black hover:text-white text-white font-bold py-2 rounded-md focus:outline-none "
               >
                 Crear cuenta
               </button>
