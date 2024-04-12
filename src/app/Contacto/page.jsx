@@ -4,7 +4,7 @@ import Formulario from "../componentes/formulario";
 import Image from "next/image";
 function Contacto() {
   return (
-    <div className=" flex justify-center flex-col md:flex-row md:justify-end  m-4 font-jersey">
+    <div className=" flex justify-center flex-col md:flex-row md:justify-end text-white bg-black ">
       <div className="flex flex-col flex-grow bg-[black] m-4">
         <h1 className="text-3xl justify-center font-bold mb-4">
           Contactame en:

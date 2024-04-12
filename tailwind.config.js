@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         jersey: ["jersey", "sans-serif"],
+        punk: ["punk", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

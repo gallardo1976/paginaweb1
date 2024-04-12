@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -17,13 +17,7 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: "cinzel";
 }
 
 .font-roboto {
@@ -79,6 +73,24 @@ body {
   font-style: normal;
   font-weight: 400;
   src: url("/fonts/jersey.ttf") format("truetype");
+}
+@font-face {
+  font-family: "regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "punk";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/punk.ttf") format("truetype");
+}
+@font-face {
+  font-family: "cinzel";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Cinzel.ttf") format("truetype");
 }
 
 @layer utilities {

@@ -43,7 +43,7 @@ const cardsData = [
 
 export default function Home() {
   return (
-    <div className="flex flex-wrap justify-center items-center  font-jersey  ">
+    <div className="flex flex-wrap justify-center bg-black items-center    ">
       {cardsData.map((card, index) => (
         <div
           key={index}

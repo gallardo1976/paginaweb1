@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[black]  border-b border-white text-[#D9D9D9] p-2 rounded-lg font-jersey flex md:flex-row">
+    <nav className="bg-[black]  border-b border-white text-[#D9D9D9] p-2 rounded-lg flex md:flex-row">
       <div className="container  justify-between mx-auto flex md:flex-row md:items-center ">
         <div className="flex    p-0">
           <Link href="/">
@@ -24,7 +24,7 @@ const Navbar = () => {
           <ul className="flex space-x-4 font-extrabold text-xl">
             <li className="font-extrabold ml-4">
               <Link href="/">
-                <p className=" hover:text-[#CD6155] cursor-pointer hover:border-b hover:border-t">
+                <p className=" hover:text-red-300 cursor-pointer  hover:border-b hover:border-t">
                   Inicio
                 </p>
               </Link>
@@ -60,7 +60,7 @@ const Navbar = () => {
             <li>
               <Link href="/login2">
                 <p className=" hover:text-red-300 cursor-pointer hover:border-b hover:border-t">
-                  Iniciar Sesion
+                  Iniciar Sesión
                 </p>
               </Link>
             </li>

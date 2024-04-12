@@ -3,7 +3,7 @@ import React from "react";
 import Imagenn from "../componentes/imagen";
 function Trabajos() {
   return (
-    <div className=" font-jersey">
+    <div className="  bg-black text-white">
       <div className=" ">
         <h2 className="text-center text-xl mt-4">
           Algunos de mis trabajos realizados

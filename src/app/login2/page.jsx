@@ -69,13 +69,13 @@ const LoginWithGoogle = () => {
   };
 
   return (
-    <div className=" p-6 flex items-center flex-col justify-center font-jersey">
+    <div className=" p-2 flex items-center bg-black text-white flex-col justify-center ">
       <div className="m-4">
         <Profile />
       </div>
 
       <div className="bg-black   ">
-        <div className=" flex border rounded py-4  hover:bg-white hover:text-black">
+        <div className=" flex border rounded py-4  hover:bg-white hover:text-extrabold hover:text-black">
           <Image
             src={Google}
             width={100}

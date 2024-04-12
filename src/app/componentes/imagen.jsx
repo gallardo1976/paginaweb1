@@ -86,7 +86,7 @@ const UploadImage = () => {
     });
 
     return () => unsubscribe();
-  }, []);
+  });
 
   const handleImageChange = (e, id) => {
     const file = e.target.files[0];
@@ -226,10 +226,8 @@ const UploadImage = () => {
                 </>
               ) : (
                 <>
-                  <h3 className="text-center font-jersey mt-2">
-                    {image.title}
-                  </h3>
-                  <p className="text-center font-jersey text-gray-500 border-b mb-4 ">
+                  <h3 className="text-center  mt-2">{image.title}</h3>
+                  <p className="text-center  text-gray-500 border-b mb-4 ">
                     {image.description}
                   </p>
                 </>
