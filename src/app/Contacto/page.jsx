@@ -47,7 +47,7 @@ function Contacto() {
             </div>
           </Link>
 
-          <Link href="https://instagram.com/tucuenta">
+          {/* <Link href="https://instagram.com/tucuenta">
             <div className="flex items-center space-x-2  cursor-pointer hover:text-2xl ">
               <Image
                 src="/instagram.webp"
@@ -58,7 +58,7 @@ function Contacto() {
               />
               <span>Instagram</span>
             </div>
-          </Link>
+          </Link> */}
         </div>
       </div>
 
