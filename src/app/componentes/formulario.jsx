@@ -26,7 +26,7 @@ const Formulario = () => {
 
   return (
     <form
-      className=" flex flex-col max-w-md mx-auto mt-8  text-[#D9D9D9] "
+      className=" flex flex-col w-1/2   mx-auto mt-8  text-[#D9D9D9]  "
       onSubmit={handleSubmit}
     >
       <div className="mb-4">

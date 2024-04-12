@@ -16,7 +16,7 @@ const Home = () => {
           className="flex flex-col md:w-1/2  md:mr-4  items-center justify-center "
         >
           <div className=" m-6  ">
-            <h1 className="text-4xl font-punk tracking-wide mb-2 text-center sm:text-5xl font-extrabold  mt-0 ">
+            <h1 className="text-4xl font-punk tracking-wide mb-4 text-center sm:text-5xl font-extrabold  mt-0 ">
               Evolution Tattoo
             </h1>
             <p className="   text-center mb-6 text-xl md:text-xl  ">

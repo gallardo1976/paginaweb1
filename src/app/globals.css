@@ -69,12 +69,6 @@ body {
 }
 
 @font-face {
-  font-family: "jersey";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/jersey.ttf") format("truetype");
-}
-@font-face {
   font-family: "regular";
   font-style: normal;
   font-weight: 400;
