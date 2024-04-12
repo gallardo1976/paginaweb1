@@ -53,8 +53,8 @@ function Contacto() {
                 src="/instagram.webp"
                 alt="Instagram"
                 className="h-14 w-auto rounded-full"
-                width={500}
-                height={500}
+                width={100}
+                height={100}
               />
               <span>Instagram</span>
             </div>
