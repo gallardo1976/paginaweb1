@@ -86,7 +86,7 @@ const UploadImage = () => {
     });
 
     return () => unsubscribe();
-  });
+  }, []);
 
   const handleImageChange = (e, id) => {
     const file = e.target.files[0];
@@ -242,26 +242,26 @@ const UploadImage = () => {
                   <input
                     type="file"
                     onChange={(e) => handleImageChange(e, image.id)}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    className="mt-1 block w-full p-1 border border-gray-300 rounded-md bg-black text-sm  text-gray-700 hover:bg-gray focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                   />
 
                   <button
                     onClick={() => handleUpload(image.id)}
                     disabled={!image.file}
-                    className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     Subir imagen
                   </button>
                   <button
                     onClick={() => handleDeleteImage(image.id)}
                     disabled={!image.imageURL}
-                    className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                    className="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-xs  rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                   >
                     Eliminar imagen
                   </button>
                   <button
                     onClick={() => handleUpdateDescription(image.id)}
-                    className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                    className="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   >
                     Actualizar descripción
                   </button>
