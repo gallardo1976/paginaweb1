@@ -1,5 +1,4 @@
 "use client";
-import Profile from "../componentes/Profile";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Google from "../../../public/google.webp";
@@ -7,14 +6,19 @@ import Logon from "../../../public/logo01.png";
 import {
   getAuth,
   signInWithRedirect,
+  signOut, // Agrega el método de cierre de sesión
   GoogleAuthProvider,
   onAuthStateChanged,
 } from "firebase/auth";
+import Profile from "../componentes/Profile";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { firebaseConfig } from "../../../firebase.config";
+import Modal from "../componentes/modal"; // Asegúrate de que esta ruta sea correcta
 
 const LoginWithGoogle = () => {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Nuevo estado para rastrear el estado de inicio de sesión
 
   useEffect(() => {
     const checkAdminPermissions = async (userEmail) => {
@@ -42,13 +46,13 @@ const LoginWithGoogle = () => {
     const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        // Usuario autenticado
         const userEmail = user.email;
-        alert("Usuario Autenticado");
+        setIsModalOpen(true);
         checkAdminPermissions(userEmail);
+        setIsLoggedIn(true); // Establece isLoggedIn en true si el usuario está autenticado
       } else {
-        // No hay usuario autenticado
         setIsAdmin(false);
+        setIsLoggedIn(false); // Establece isLoggedIn en false si no hay usuario autenticado
       }
     });
   }, []);
@@ -58,24 +62,35 @@ const LoginWithGoogle = () => {
     const auth = getAuth();
     signInWithRedirect(auth, provider)
       .then((result) => {
-        // El usuario ha iniciado sesión correctamente
         const user = result.user;
         console.log("Usuario autenticado:", user);
+        setIsLoggedIn(true); // Establece isLoggedIn en true después del inicio de sesión
       })
       .catch((error) => {
-        // Hubo un error al iniciar sesión
         console.error("Error al iniciar sesión con Google:", error);
       });
   };
 
+  const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        setIsLoggedIn(false); // Establece isLoggedIn en false después del cierre de sesión
+        console.log("Usuario desconectado.");
+      })
+      .catch((error) => {
+        console.error("Error al cerrar sesión:", error);
+      });
+  };
+
   return (
-    <div className=" p-2 flex items-center  text-white flex-col justify-center ">
+    <div className="p-2 flex items-center text-white flex-col justify-center">
       <div className="m-4">
         <Profile />
       </div>
 
       <div className="">
-        <div className=" flex border rounded py-4  hover:bg-white hover:text-extrabold hover:text-black">
+        <div className="flex border rounded py-4 justify-center  hover:bg-white hover:text-extrabold hover:text-black">
           <Image
             src={Google}
             width={100}
@@ -84,17 +99,20 @@ const LoginWithGoogle = () => {
             className="w-10 h-auto mx-2"
           />
 
-          <button onClick={handleGoogleSignIn} className="">
-            Iniciar sesion con Google
+          <button
+            onClick={isLoggedIn ? handleLogout : handleGoogleSignIn}
+            className="text-center justify-center items-center flex "
+          >
+            {isLoggedIn ? "Cerrar sesión" : "Iniciar sesión con Google"}
           </button>
         </div>
-        <div className=" flex mt-4 mb-4 text-[red]">
+        <div className="flex mt-4 mb-4 text-[red]">
           {isAdmin ? (
-            <div className=" ">
+            <div className="text-[green] font-extrabold">
               <p>Tienes permisos de administrador.</p>
             </div>
           ) : (
-            <div className=" ">
+            <div className="">
               <p className="">No tienes permisos de administrador.</p>
             </div>
           )}
@@ -103,6 +121,17 @@ const LoginWithGoogle = () => {
       <div>
         <Image src={Logon} alt="logo" width={500} height={500} />
       </div>
+
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <div>
+          <h2 className="text-lg font-medium text-center text-white">
+            Autenticación
+          </h2>
+          <p className="mt-1 text-sm text-gray-400">
+            Has iniciado sesión correctamente.
+          </p>
+        </div>
+      </Modal>
     </div>
   );
 };

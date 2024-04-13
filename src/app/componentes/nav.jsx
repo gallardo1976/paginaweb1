@@ -63,7 +63,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="md:hidden mt-4 md:mt-0 relative">
+        <div className=" md:hidden mt-4 md:mt-0 relative">
           <button
             className="text-white focus:outline-none"
             onClick={toggleMenu}
@@ -130,7 +130,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link href="/login2">
-                    <p
+                    <p id="login"
                       className="hover:text-[#CD6155] cursor-pointer border-b"
                       onClick={() => setIsOpen(false)}
                     >
@@ -139,7 +139,9 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Profile />
+                  <p className="p-2 mr-4">
+                    <Profile />
+                  </p>
                 </li>
               </ul>
             </div>
