@@ -101,7 +101,7 @@ const LoginWithGoogle = () => {
 
           <button
             onClick={isLoggedIn ? handleLogout : handleGoogleSignIn}
-            className="text-center justify-center items-center flex "
+            className="text-center justify-center items-center flex pr-4 "
           >
             {isLoggedIn ? "Cerrar sesión" : "Iniciar sesión con Google"}
           </button>
@@ -113,7 +113,7 @@ const LoginWithGoogle = () => {
             </div>
           ) : (
             <div className="">
-              <p className="">No tienes permisos de administrador.</p>
+              <p className=""></p>
             </div>
           )}
         </div>
