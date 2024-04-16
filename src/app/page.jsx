@@ -47,7 +47,7 @@ const Home = () => {
             className={`rounded-xl items-center ${
               hovered
                 ? "transition duration-500 ease-in-out transform hover:scale-110"
-                : "1"
+                : ""
             }`}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
