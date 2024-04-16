@@ -13,11 +13,11 @@ function Contacto() {
           <Link href="https://wa.me/573216166919">
             <div className="flex items-center space-x-2  cursor-pointer hover:text-2xl ">
               <Image
-                src="/whatsapp4.png"
+                src="/whats05.jpg"
                 alt="WhatsApp"
                 width={100}
                 height={100}
-                className="h-14 w-auto"
+                className="h-14 w-auto rounded-3xl"
               />
               <span className="">Whatsapp</span>
             </div>
@@ -25,7 +25,7 @@ function Contacto() {
           <Link href="https://facebook.com/tuusuario">
             <div className="flex items-center space-x-2   cursor-pointer hover:text-2xl ">
               <Image
-                src="/face.png"
+                src="/face01.png"
                 alt="Facebook"
                 className="h-14 w-auto rounded-full"
                 width={500}
