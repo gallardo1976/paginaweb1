@@ -3,8 +3,8 @@ import React from "react";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import imagen01 from "../../public/image01.jpg";
-import imagen02 from "../../public/imagen02.jpg";
+import imagen03 from "../../public/imagen03.png";
+import imagen04 from "../../public/imagen04.png";
 
 const Home = () => {
   const [hovered, setHovered] = useState(false);
@@ -40,7 +40,7 @@ const Home = () => {
 
         <div className="flex   justify-center    md:w-1/2 p-1 m-2  md:items-center md:justify-center  ">
           <Image
-            src={hovered ? imagen01 : imagen02}
+            src={hovered ? imagen03 : imagen04}
             alt=""
             width={260}
             height={400}
