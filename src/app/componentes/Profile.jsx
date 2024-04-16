@@ -27,9 +27,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="font-sans text-xs  flex  items-center">
+    <div className=" text-xs  flex  items-center">
       {user && (
-        <div className="bg-black  flex items-center">
+        <div className="flex items-center">
           <span>Usuario: {user.email}</span>
           <button onClick={handleSignOut}>
             <Image

@@ -26,7 +26,7 @@ const Home = () => {
           </div>
           <div class="flex  justify-center mb-4">
             <Link href="/Contacto">
-              <button class="border-2 border-dynamic text-dynamic px-4 py-2 rounded mr-2 hover:bg-white hover:font-extrabold hover:text-black hover:border-dynamic">
+              <button class="border-2 bg-white text-black font-extrabold border-dynamic text-dynamic px-4 py-2 rounded mr-2 hover:bg-gray-900 hover:font-extrabold hover:text-white hover:border-dynamic">
                 Contacta conmigo
               </button>
             </Link>
