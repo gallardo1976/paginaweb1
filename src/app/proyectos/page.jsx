@@ -1,6 +1,6 @@
 // pages/about.js
 "use client";
-import Tradicional from "../../../public/image01.jpg";
+
 import Image from "next/image";
 import Galeria from "../componentes/galeria";
 import { useState } from "react";
